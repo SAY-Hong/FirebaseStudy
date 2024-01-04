@@ -28,6 +28,8 @@ class ProductStore: ObservableObject {
     // 실시간 데이터 읽기 쓰기가 가능하다.
     func listenToRTDatabase() {
         guard let dbPath = ref?.child("products") else { return }
+        
+        // 데이터 생성이 감지 되었을 때
         dbPath.observe(DataEventType.childAdded) { [weak self] snapshot in
             guard let self = self, let json = snapshot.value as? [String: Any] else {
                 return
@@ -41,6 +43,22 @@ class ProductStore: ObservableObject {
                 print(error)
             }
 
+        }
+        
+        // 데이터 삭제가 감지 되었을 때
+        dbPath.observe(DataEventType.childRemoved) { [weak self] snapshot in
+            guard let self = self, let json = snapshot.value as? [String: Any] else {
+                return
+            }
+            do {
+                let data = try JSONSerialization.data(withJSONObject: json)
+                let product = try self.decoder.decode(Product.self, from: data)
+                for (index, item) in self.products.enumerated() where product.id == item.id {
+                    self.products.remove(at: index)
+                }
+            } catch {
+                print(error)
+            }
         }
     }
     
@@ -57,6 +75,11 @@ class ProductStore: ObservableObject {
             "description": item.description,
             "isOrder": item.isOrder
         ])
+    }
+    
+    // 데이터베이스에서 특정 경로의 데이터를 삭제
+    func deleteProduct(key: String) {
+        ref?.child("produncs/\(key)").removeValue()
     }
 }
 
