@@ -70,15 +70,21 @@ class ProductStore: ObservableObject {
                 let data = try JSONSerialization.data(withJSONObject: json)
                 let product = try self.decoder.decode(Product.self, from: data)
                 
-                var index = 0
-                for item in self.products {
-                    if product.id == item.id {
-                        break
-                    } else {
-                        index += 1
-                    }
+                // 버전1
+                for (index, item) in self.products.enumerated() where product.id  == item.id {
+                    self.products[index] = product
                 }
-                self.products[index] = product
+                
+                // 버전2
+//                var index = 0
+//                for item in self.products {
+//                    if product.id == item.id {
+//                        break
+//                    } else {
+//                        index += 1
+//                    }
+//                }
+//                self.products[index] = product
             } catch {
                 print(error)
             }
