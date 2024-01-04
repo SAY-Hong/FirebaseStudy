@@ -21,10 +21,15 @@ struct ProductDetailView: View {
             }, header: {
                 Text("Products description")
             })
-            
-
         }
         .navigationTitle("\(productInformation.name)'s Info")
+        .toolbar {
+            NavigationLink {
+                EditInformationView()
+            } label: {
+                Text("수정하기")
+            }
+        }
     }
 }
 
