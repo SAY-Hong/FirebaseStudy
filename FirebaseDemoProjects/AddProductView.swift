@@ -15,11 +15,22 @@ struct AddProductView: View {
     @State var isOrder: Bool = false
     
     var body: some View {
-        VStack {
-            TextField("이름", text: $name)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            TextField("제품 설명", text: $description)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+        VStack(spacing: 50) {
+            VStack(alignment: .leading) {
+                Text("Product Name")
+                    .font(.title)
+                    .bold()
+                TextField("이름", text: $name)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+            }
+            VStack(alignment: .leading) {
+                Text("Product description")
+                    .font(.title)
+                    .bold()
+                TextField("제품 설명", text: $description)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+            }
+            Spacer()
             Button {
                 productStore.addProduct(item: Product(id: UUID().uuidString, name: name, description: description, isOrder: isOrder))
             } label: {

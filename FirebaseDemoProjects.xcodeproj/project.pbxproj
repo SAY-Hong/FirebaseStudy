@@ -22,6 +22,7 @@
 		B1FEEE0B2B4657C5002DE584 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B1FEEE0A2B4657C5002DE584 /* FirebaseDatabaseSwift */; };
 		B1FEEE0D2B468F18002DE584 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FEEE0C2B468F18002DE584 /* ProductDetailView.swift */; };
 		B1FEEE0F2B4694C9002DE584 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FEEE0E2B4694C9002DE584 /* HomeView.swift */; };
+		B1FEEE112B469D27002DE584 /* EditInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FEEE102B469D27002DE584 /* EditInformationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		B1FEEE052B465258002DE584 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		B1FEEE0C2B468F18002DE584 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		B1FEEE0E2B4694C9002DE584 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		B1FEEE102B469D27002DE584 /* EditInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInformationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				B1FEEE052B465258002DE584 /* Product.swift */,
 				B11CEAF52B351691005A9C95 /* AddProductView.swift */,
 				B1FEEE0C2B468F18002DE584 /* ProductDetailView.swift */,
+				B1FEEE102B469D27002DE584 /* EditInformationView.swift */,
 				B1FEEE0E2B4694C9002DE584 /* HomeView.swift */,
 				B11CEAF72B351692005A9C95 /* Assets.xcassets */,
 				B11CEAF92B351692005A9C95 /* Preview Content */,
@@ -300,6 +303,7 @@
 				B11CEAF42B351691005A9C95 /* FirebaseDemoProjectsApp.swift in Sources */,
 				B1FEEE0F2B4694C9002DE584 /* HomeView.swift in Sources */,
 				B1FEEE062B465258002DE584 /* Product.swift in Sources */,
+				B1FEEE112B469D27002DE584 /* EditInformationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

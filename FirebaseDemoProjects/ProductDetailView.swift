@@ -10,10 +10,21 @@ import SwiftUI
 struct ProductDetailView: View {
     var productInformation: Product
     var body: some View {
-        VStack {
-            Text(productInformation.name)
-            Text(productInformation.description)
+        Form {
+            Section(content: {
+                Text(productInformation.name)
+            }, header: {
+                Text("Products Name")
+            })
+            Section(content: {
+                Text(productInformation.description)
+            }, header: {
+                Text("Products description")
+            })
+            
+
         }
+        .navigationTitle("\(productInformation.name)'s Info")
     }
 }
 
