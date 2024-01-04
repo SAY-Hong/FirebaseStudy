@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProductDetailView: View {
-    var productInformation: Product
+    @State var productInformation: Product
     var body: some View {
         Form {
             Section(content: {
@@ -25,7 +25,7 @@ struct ProductDetailView: View {
         .navigationTitle("\(productInformation.name)'s Info")
         .toolbar {
             NavigationLink {
-                EditInformationView()
+                EditInformationView(selectedProduct: $productInformation)
             } label: {
                 Text("수정하기")
             }

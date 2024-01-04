@@ -8,11 +8,40 @@
 import SwiftUI
 
 struct EditInformationView: View {
+    @ObservedObject var productStore = ProductStore.shared
+    @State var name: String = ""
+    @State var description: String = ""
+    @State var isOrder: Bool = false
+    @Binding var selectedProduct: Product
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 50) {
+            VStack(alignment: .leading) {
+                Text("Product Name")
+                    .font(.title)
+                    .bold()
+                TextField("이름", text: $selectedProduct.name)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+            }
+            VStack(alignment: .leading) {
+                Text("Product description")
+                    .font(.title)
+                    .bold()
+                TextField("제품 설명", text: $selectedProduct.description)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+            }
+            Spacer()
+            Button {
+                let editProduct = Product(id: selectedProduct.id, name: selectedProduct.name, description: selectedProduct.description, isOrder: selectedProduct.isOrder)
+                productStore.updateProduct(item: editProduct)
+            } label: {
+                Text("수정 완료하기")
+            }
+            Spacer()
+        }
+        .padding()
     }
 }
 
-#Preview {
-    EditInformationView()
-}
+//#Preview {
+//    EditInformationView()
+//}
