@@ -60,6 +60,9 @@ class ProductStore: ObservableObject {
                 print(error)
             }
         }
+        
+        // MARK: 데이터 변경이 감지 되었을 때
+        
     }
     
     // 데이터베이스를 실시간으로 관찰하는 것을 중지.
@@ -80,6 +83,22 @@ class ProductStore: ObservableObject {
     // 데이터베이스에서 특정 경로의 데이터를 삭제
     func deleteProduct(key: String) {
         ref?.child("produncs/\(key)").removeValue()
+    }
+    
+    // 데이터베이스에서 특정 경로의 데이터를 수정
+    func updateProduct(item: Product) {
+        let update: [String: Any] = [
+            "id": item.id,
+            "name": item.name,
+            "description": item.description,
+            "isOrder": item.isOrder
+        ]
+        
+        let childItem = ["products/\(item.id)": update]
+        for (index, product) in products.enumerated() where product.id == item.id {
+            products[index] = item
+        }
+        self.ref?.updateChildValues(childItem)
     }
 }
 
