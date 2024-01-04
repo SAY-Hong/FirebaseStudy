@@ -62,6 +62,9 @@ class ProductStore: ObservableObject {
         }
         
         // MARK: 데이터 변경이 감지 되었을 때
+//        dbPath.observe(DataEventType.childChanged) { <#DataSnapshot#>, <#String?#> in
+//            <#code#>
+//        }
         
     }
     
@@ -82,7 +85,7 @@ class ProductStore: ObservableObject {
     
     // 데이터베이스에서 특정 경로의 데이터를 삭제
     func deleteProduct(key: String) {
-        ref?.child("produncs/\(key)").removeValue()
+        ref?.child("products/\(key)").removeValue()
     }
     
     // 데이터베이스에서 특정 경로의 데이터를 수정

@@ -30,6 +30,13 @@ struct ContentView: View {
                 ForEach(productStore.products, id: \.self) { product in
                     Text(product.name)
                 }
+                // MARK: indexSet의 정체는 뭐니?
+                .onDelete(perform: { indexSet in
+                    if let indexSet = indexSet.first {
+                        print(productStore.products[indexSet].id)
+                        self.productStore.deleteProduct(key: productStore.products[indexSet].id)
+                    }
+                })
             }
         }
         .padding()
