@@ -62,9 +62,20 @@ class ProductStore: ObservableObject {
         }
         
         // MARK: 데이터 변경이 감지 되었을 때
-//        dbPath.observe(DataEventType.childChanged) { <#DataSnapshot#>, <#String?#> in
-//            <#code#>
-//        }
+        dbPath.observe(DataEventType.childChanged) { [weak self] snapshot, _ in
+            guard let self = self, let json = snapshot.value as? [String: Any] else {
+                return
+            }
+            do {
+                let data = try JSONSerialization.data(withJSONObject: json)
+                let product = try self.decoder.decode(Product.self, from: data)
+                for (index, item) in self.products.enumerated() where product.id  == item.id {
+                    self.products[index] = product
+                }
+            } catch {
+                print(error)
+            }
+        }
         
     }
     

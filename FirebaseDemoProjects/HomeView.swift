@@ -1,34 +1,24 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  FirebaseDemoProjects
 //
-//  Created by 홍세희 on 2023/12/22.
+//  Created by 홍세희 on 2024/01/04.
 //
 
 import SwiftUI
 
-
-struct ContentView: View {
+struct HomeView: View {
     @ObservedObject var productStore = ProductStore.shared
-    @State var name: String = ""
-    @State var description: String = ""
-    @State var isOrder: Bool = false
-    
+//    @StateObject var productInformation: ProductStore = ProductStore()
     var body: some View {
-        VStack {
-            TextField("이름", text: $name)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            TextField("제품 설명", text: $description)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            Button {
-                productStore.addProduct(item: Product(id: UUID().uuidString, name: name, description: description, isOrder: isOrder))
-            } label: {
-                Text("Add Product")
-            }
-            Spacer()
+        NavigationStack {
             List {
                 ForEach(productStore.products, id: \.self) { product in
-                    Text(product.name)
+                    NavigationLink {
+                        ProductDetailView(productInformation: product)
+                    } label: {
+                        Text(product.name)
+                    }
                 }
                 // MARK: indexSet의 정체는 뭐니?
                 .onDelete(perform: { indexSet in
@@ -38,8 +28,16 @@ struct ContentView: View {
                     }
                 })
             }
+            .navigationBarTitle("Product List")
+            .toolbar {
+                NavigationLink {
+                    AddProductView()
+                } label: {
+                    Text("추가하기")
+                }
+
+            }
         }
-        .padding()
         .onAppear {
             self.productStore.listenToRTDatabase()
         }
@@ -50,5 +48,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    HomeView()
 }
