@@ -37,5 +37,25 @@ class RestaurantStore: ObservableObject {
             }
         }
     }
+    
+    func addRestaurant(docName: String, documentData: [String: Any]) {
+        let docRef = db.collection("Restaurants").document(docName)
+        docRef.setData(documentData) { error in
+            if let error = error {
+                print(error)
+            } else {
+                print("Success:", docName)
+            }
+        }
+    }
+    
+    func addRestaurant(restaurant: Restaurant) {
+        let documentData: [String: Any] = [
+            "name": restaurant.name,
+            "address": restaurant.address,
+            "dateAdded": Timestamp(date: Date())
+        ]
+        addRestaurant(docName: restaurant.name, documentData: documentData)
+    }
 }
 

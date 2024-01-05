@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 struct FireStoreView: View {
     @ObservedObject var restaurantStore = RestaurantStore.shared
@@ -14,13 +15,21 @@ struct FireStoreView: View {
     
     var body: some View {
         VStack {
-            TextField("이름", text: $name)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            TextField("이름", text: $address)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+            VStack {
+                TextField("Name", text: $name)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                TextField("Address", text: $address)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+            }
+            .padding()
             
             Button {
-                
+                restaurantStore.addRestaurant(restaurant:
+                            Restaurant(
+                                id: "",
+                                name: name,
+                                address: address,
+                                dateAdded: Timestamp()))
             } label: {
                 Text("Add")
             }
