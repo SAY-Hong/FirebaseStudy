@@ -22,9 +22,8 @@ struct HomeView: View {
                 }
                 // MARK: indexSet의 정체는 뭐니?
                 .onDelete(perform: { indexSet in
-                    if let indexSet = indexSet.first {
-                        print(productStore.products[indexSet].id)
-                        self.productStore.deleteProduct(key: productStore.products[indexSet].id)
+                    for index in indexSet {
+                        productStore.deleteProduct(key: productStore.products[index].id)
                     }
                 })
             }
