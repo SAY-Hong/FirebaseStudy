@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 import FirebaseFirestore
 
 
@@ -23,14 +24,13 @@ class RestaurantStore: ObservableObject {
     
     @Published var restaurants = [Restaurant]()
     let db = Firestore.firestore()
-    func feetchRestaurant() {
-        let docRef = db.collection("Restaurants").document("PizzaMania")
-        docRef.getDocument { document, error in
+    func feetchAllRestaurant() {
+       db.collection("Restaurants").getDocuments() { (snapshot, error) in
             guard error == nil else { return }
-            if let document = document, document.exists {
+            for document in snapshot!.documents {
                 let data = document.data()
                 print("data:", data)
-                self.restaurants.append(Restaurant(id: "", name: data?["name"] as? String ?? "", address: data?["address"] as? String ?? "", dateAdded: data?["dateAdded"] as? Timestamp ?? Timestamp()))
+                self.restaurants.append(Restaurant(id: "", name: data["name"] as? String ?? "", address: data["address"] as? String ?? "", dateAdded: data["dateAdded"] as? Timestamp ?? Timestamp()))
             }
         }
     }
