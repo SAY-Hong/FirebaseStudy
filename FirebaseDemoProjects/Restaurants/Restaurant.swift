@@ -27,6 +27,9 @@ class RestaurantStore: ObservableObject {
     func feetchAllRestaurant() {
        db.collection("Restaurants").getDocuments() { (snapshot, error) in
             guard error == nil else { return }
+           
+            self.restaurants.removeAll()
+           
             for document in snapshot!.documents {
                 let data = document.data()
                 print("data:", data)

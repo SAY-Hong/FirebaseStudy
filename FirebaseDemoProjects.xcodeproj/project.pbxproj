@@ -19,6 +19,7 @@
 		B11CEB232B3520F4005A9C95 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B11CEB222B3520F4005A9C95 /* FirebaseAnalyticsSwift */; };
 		B17CDDC52B47D58F0046FADC /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17CDDC42B47D58F0046FADC /* Restaurant.swift */; };
 		B17CDDC92B47D7FB0046FADC /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B17CDDC82B47D7FB0046FADC /* FirebaseFirestore */; };
+		B17CDDCB2B47DD4C0046FADC /* FireStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17CDDCA2B47DD4C0046FADC /* FireStoreView.swift */; };
 		B1FEEE062B465258002DE584 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FEEE052B465258002DE584 /* Product.swift */; };
 		B1FEEE092B4657BC002DE584 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B1FEEE082B4657BC002DE584 /* FirebaseDatabase */; };
 		B1FEEE0B2B4657C5002DE584 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B1FEEE0A2B4657C5002DE584 /* FirebaseDatabaseSwift */; };
@@ -57,6 +58,7 @@
 		B11CEB102B351692005A9C95 /* FirebaseDemoProjectsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDemoProjectsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B11CEB1D2B3518AC005A9C95 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B17CDDC42B47D58F0046FADC /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		B17CDDCA2B47DD4C0046FADC /* FireStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreView.swift; sourceTree = "<group>"; };
 		B1FEEE052B465258002DE584 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		B1FEEE0C2B468F18002DE584 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		B1FEEE0E2B4694C9002DE584 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				B17CDDC42B47D58F0046FADC /* Restaurant.swift */,
+				B17CDDCA2B47DD4C0046FADC /* FireStoreView.swift */,
 			);
 			path = Restaurants;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				B1FEEE0D2B468F18002DE584 /* ProductDetailView.swift in Sources */,
 				B17CDDC52B47D58F0046FADC /* Restaurant.swift in Sources */,
 				B11CEAF42B351691005A9C95 /* FirebaseDemoProjectsApp.swift in Sources */,
+				B17CDDCB2B47DD4C0046FADC /* FireStoreView.swift in Sources */,
 				B1FEEE0F2B4694C9002DE584 /* HomeView.swift in Sources */,
 				B1FEEE062B465258002DE584 /* Product.swift in Sources */,
 				B1FEEE112B469D27002DE584 /* EditInformationView.swift in Sources */,
