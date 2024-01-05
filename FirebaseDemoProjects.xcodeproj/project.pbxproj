@@ -17,6 +17,8 @@
 		B11CEB1E2B3518AC005A9C95 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B11CEB1D2B3518AC005A9C95 /* GoogleService-Info.plist */; };
 		B11CEB212B3520F4005A9C95 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B11CEB202B3520F4005A9C95 /* FirebaseAnalytics */; };
 		B11CEB232B3520F4005A9C95 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B11CEB222B3520F4005A9C95 /* FirebaseAnalyticsSwift */; };
+		B17CDDC52B47D58F0046FADC /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17CDDC42B47D58F0046FADC /* Restaurant.swift */; };
+		B17CDDC92B47D7FB0046FADC /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B17CDDC82B47D7FB0046FADC /* FirebaseFirestore */; };
 		B1FEEE062B465258002DE584 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FEEE052B465258002DE584 /* Product.swift */; };
 		B1FEEE092B4657BC002DE584 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B1FEEE082B4657BC002DE584 /* FirebaseDatabase */; };
 		B1FEEE0B2B4657C5002DE584 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B1FEEE0A2B4657C5002DE584 /* FirebaseDatabaseSwift */; };
@@ -54,6 +56,7 @@
 		B11CEB0E2B351692005A9C95 /* FirebaseDemoProjectsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDemoProjectsUITests.swift; sourceTree = "<group>"; };
 		B11CEB102B351692005A9C95 /* FirebaseDemoProjectsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDemoProjectsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B11CEB1D2B3518AC005A9C95 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B17CDDC42B47D58F0046FADC /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		B1FEEE052B465258002DE584 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		B1FEEE0C2B468F18002DE584 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		B1FEEE0E2B4694C9002DE584 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -68,6 +71,7 @@
 				B1FEEE0B2B4657C5002DE584 /* FirebaseDatabaseSwift in Frameworks */,
 				B1FEEE092B4657BC002DE584 /* FirebaseDatabase in Frameworks */,
 				B11CEB232B3520F4005A9C95 /* FirebaseAnalyticsSwift in Frameworks */,
+				B17CDDC92B47D7FB0046FADC /* FirebaseFirestore in Frameworks */,
 				B11CEB212B3520F4005A9C95 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,13 +117,10 @@
 		B11CEAF22B351691005A9C95 /* FirebaseDemoProjects */ = {
 			isa = PBXGroup;
 			children = (
+				B17CDDC72B47D5B60046FADC /* Restaurants */,
+				B17CDDC62B47D5AE0046FADC /* Product */,
 				B11CEB1D2B3518AC005A9C95 /* GoogleService-Info.plist */,
 				B11CEAF32B351691005A9C95 /* FirebaseDemoProjectsApp.swift */,
-				B1FEEE052B465258002DE584 /* Product.swift */,
-				B11CEAF52B351691005A9C95 /* AddProductView.swift */,
-				B1FEEE0C2B468F18002DE584 /* ProductDetailView.swift */,
-				B1FEEE102B469D27002DE584 /* EditInformationView.swift */,
-				B1FEEE0E2B4694C9002DE584 /* HomeView.swift */,
 				B11CEAF72B351692005A9C95 /* Assets.xcassets */,
 				B11CEAF92B351692005A9C95 /* Preview Content */,
 			);
@@ -151,6 +152,26 @@
 			path = FirebaseDemoProjectsUITests;
 			sourceTree = "<group>";
 		};
+		B17CDDC62B47D5AE0046FADC /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				B1FEEE052B465258002DE584 /* Product.swift */,
+				B11CEAF52B351691005A9C95 /* AddProductView.swift */,
+				B1FEEE0C2B468F18002DE584 /* ProductDetailView.swift */,
+				B1FEEE102B469D27002DE584 /* EditInformationView.swift */,
+				B1FEEE0E2B4694C9002DE584 /* HomeView.swift */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		B17CDDC72B47D5B60046FADC /* Restaurants */ = {
+			isa = PBXGroup;
+			children = (
+				B17CDDC42B47D58F0046FADC /* Restaurant.swift */,
+			);
+			path = Restaurants;
+			sourceTree = "<group>";
+		};
 		B1FEEE072B4657BC002DE584 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +200,7 @@
 				B11CEB222B3520F4005A9C95 /* FirebaseAnalyticsSwift */,
 				B1FEEE082B4657BC002DE584 /* FirebaseDatabase */,
 				B1FEEE0A2B4657C5002DE584 /* FirebaseDatabaseSwift */,
+				B17CDDC82B47D7FB0046FADC /* FirebaseFirestore */,
 			);
 			productName = FirebaseDemoProjects;
 			productReference = B11CEAF02B351691005A9C95 /* FirebaseDemoProjects.app */;
@@ -300,6 +322,7 @@
 			files = (
 				B11CEAF62B351691005A9C95 /* AddProductView.swift in Sources */,
 				B1FEEE0D2B468F18002DE584 /* ProductDetailView.swift in Sources */,
+				B17CDDC52B47D58F0046FADC /* Restaurant.swift in Sources */,
 				B11CEAF42B351691005A9C95 /* FirebaseDemoProjectsApp.swift in Sources */,
 				B1FEEE0F2B4694C9002DE584 /* HomeView.swift in Sources */,
 				B1FEEE062B465258002DE584 /* Product.swift in Sources */,
@@ -651,6 +674,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B11CEB1F2B351BE2005A9C95 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalyticsSwift;
+		};
+		B17CDDC82B47D7FB0046FADC /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B11CEB1F2B351BE2005A9C95 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 		B1FEEE082B4657BC002DE584 /* FirebaseDatabase */ = {
 			isa = XCSwiftPackageProductDependency;

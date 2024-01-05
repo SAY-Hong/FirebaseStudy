@@ -31,7 +31,6 @@ struct EditInformationView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
             }
             Spacer()
-            // TODO: dismiss 추가하기
             Button {
                 let editProduct = Product(id: selectedProduct.id, name: selectedProduct.name, description: selectedProduct.description, isOrder: selectedProduct.isOrder)
                 productStore.updateProduct(item: editProduct)
