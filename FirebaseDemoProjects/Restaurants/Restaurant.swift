@@ -33,11 +33,12 @@ class RestaurantStore: ObservableObject {
             for document in snapshot!.documents {
                 let data = document.data()
                 print("data:", data)
-                self.restaurants.append(Restaurant(id: "", name: data["name"] as? String ?? "", address: data["address"] as? String ?? "", dateAdded: data["dateAdded"] as? Timestamp ?? Timestamp()))
+                self.restaurants.append(Restaurant(id: data["id"] as? String ?? UUID().uuidString, name: data["name"] as? String ?? "", address: data["address"] as? String ?? "", dateAdded: data["dateAdded"] as? Timestamp ?? Timestamp()))
             }
         }
     }
     
+    // 컬렉션에 문서 데이터 추가하기
     func addRestaurant(docName: String, documentData: [String: Any]) {
         let docRef = db.collection("Restaurants").document(docName)
         docRef.setData(documentData) { error in
