@@ -24,7 +24,7 @@ class RestaurantStore: ObservableObject {
     
     @Published var restaurants = [Restaurant]()
     let db = Firestore.firestore()
-    func feetchAllRestaurant() {
+    func fetchAllRestaurant() {
        db.collection("Restaurants").getDocuments() { (snapshot, error) in
             guard error == nil else { return }
            

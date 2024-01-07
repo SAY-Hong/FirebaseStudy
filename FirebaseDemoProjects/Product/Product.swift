@@ -30,6 +30,7 @@ class ProductStore: ObservableObject {
         guard let dbPath = ref?.child("products") else { return }
         
         // 데이터 생성이 감지 되었을 때
+        // snapshot -> 하위 데이터를 포함하여 해당 위치의 모든 데이터를 포함.
         dbPath.observe(DataEventType.childAdded) { [weak self] snapshot in
             guard let self = self, let json = snapshot.value as? [String: Any] else {
                 return

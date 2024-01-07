@@ -35,7 +35,7 @@ struct FireStoreView: View {
             }
             
             Button {
-                restaurantStore.feetchAllRestaurant()
+                restaurantStore.fetchAllRestaurant()
             } label: {
                 Text("Load")
             }
