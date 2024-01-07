@@ -98,8 +98,10 @@ class ProductStore: ObservableObject {
     }
     
     // 데이터베이스에 Product 인스턴스 추가
+    // MARK: setValue
+    // 기본 쓰기 작업의 경우 지정된 참조에 데이터를 저장하고 해당 경로에 있는 기존 데이터 대체.
     func addProduct(item: Product) {
-        self.ref?.child("products").child("\(item.id)").setValue([
+        self.ref?.child("products/\(item.id)").setValue([
             "id": item.id,
             "name": item.name,
             "description": item.description,
