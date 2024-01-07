@@ -35,10 +35,13 @@ struct FireStoreView: View {
             }
             
             Button {
-                restaurantStore.fetchAllRestaurant()
+                Task {
+                   await restaurantStore.fetchAllRestaurant()
+                }
             } label: {
                 Text("Load")
             }
+            
             Spacer()
             List {
                 ForEach(restaurantStore.restaurants, id: \.self) { restaurant in

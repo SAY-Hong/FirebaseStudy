@@ -24,17 +24,18 @@ class RestaurantStore: ObservableObject {
     
     @Published var restaurants = [Restaurant]()
     let db = Firestore.firestore()
-    func fetchAllRestaurant() {
-       db.collection("Restaurants").getDocuments() { (snapshot, error) in
-            guard error == nil else { return }
-           
-            self.restaurants.removeAll()
-           
-            for document in snapshot!.documents {
+    
+    @MainActor
+    func fetchAllRestaurant() async {
+        do {
+            let snapshot = try await db.collection("Restaurants").getDocuments()
+            for document in snapshot.documents {
                 let data = document.data()
                 print("data:", data)
                 self.restaurants.append(Restaurant(id: data["id"] as? String ?? UUID().uuidString, name: data["name"] as? String ?? "", address: data["address"] as? String ?? "", dateAdded: data["dateAdded"] as? Timestamp ?? Timestamp()))
             }
+        } catch {
+            print(error)
         }
     }
     
