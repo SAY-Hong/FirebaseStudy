@@ -70,11 +70,18 @@ class RestaurantStore: ObservableObject {
     // MARK: Update
     func updateRestaurant(restaurantName: String, restaurantAddress: String) {
         let docRef = db.collection("Restaurants").document(restaurantName)
-        docRef.setData( ["address": restaurantAddress], merge: true) { error in
+//        docRef.setData( ["address": restaurantAddress], merge: true) { error in
+//            if let error = error {
+//                print("Error writing document:", error)
+//            } else {
+//                print("Success merged.")
+//            }
+//        }
+        docRef.updateData(["address": restaurantAddress]) { error in
             if let error = error {
-                print("Error writing document:", error)
+                print(error)
             } else {
-                print("Success merged.")
+                print("Successed merged:", restaurantName)
             }
         }
     }
