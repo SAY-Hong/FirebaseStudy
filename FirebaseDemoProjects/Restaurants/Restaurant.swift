@@ -118,9 +118,12 @@ class RestaurantStore: ObservableObject {
                         print("[add data]", rest)
                     }
                 }
-                // TODO: 직접 해보기!
                 if diff.type == .modified {
-                    print(diff.document.data())
+                    if let rest = try? diff.document.data(as: Restaurant.self) {
+                        for (index, item) in self.restaurants.enumerated() where rest.name  == item.name {
+                            self.restaurants[index] = rest
+                        }
+                    }
                 }
                 if diff.type == .removed {
                     if let rest = try? diff.document.data(as: Restaurant.self) {

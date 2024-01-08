@@ -52,7 +52,11 @@ struct FireStoreView: View {
             Spacer()
             List {
                 ForEach(restaurantStore.restaurants, id: \.self) { restaurant in
-                    Text(restaurant.name)
+                    HStack {
+                        Text(restaurant.name)
+                        Spacer()
+                        Text(restaurant.address)
+                    }
                 }
                 .onDelete(perform: { indexSet in
                     for index in indexSet {
