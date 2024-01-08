@@ -10,14 +10,12 @@ import Firebase
 import FirebaseFirestore
 
 
-struct Restaurant: Codable, Identifiable, Hashable {
-    var id: String
+struct Restaurant: Codable, Hashable {
     var name: String
     var address: String
     var dateAdded: Timestamp
     
-    init(id: String, name: String, address: String, dateAdded: Timestamp = Timestamp(date: Date())) {
-        self.id = id
+    init(name: String, address: String, dateAdded: Timestamp = Timestamp(date: Date())) {
         self.name = name
         self.address = address
         self.dateAdded = dateAdded
@@ -39,7 +37,7 @@ class RestaurantStore: ObservableObject {
             for document in snapshot.documents {
                 let data = document.data()
                 print("data:", data)
-                self.restaurants.append(Restaurant(id: data["id"] as? String ?? UUID().uuidString, name: data["name"] as? String ?? "", address: data["address"] as? String ?? "", dateAdded: data["dateAdded"] as? Timestamp ?? Timestamp()))
+                self.restaurants.append(Restaurant(name: data["name"] as? String ?? "", address: data["address"] as? String ?? "", dateAdded: data["dateAdded"] as? Timestamp ?? Timestamp()))
             }
         } catch {
             print(error)

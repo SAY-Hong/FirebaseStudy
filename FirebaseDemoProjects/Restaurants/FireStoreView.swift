@@ -26,7 +26,6 @@ struct FireStoreView: View {
             Button {
                 restaurantStore.addRestaurant(restaurant:
                             Restaurant(
-                                id: "",
                                 name: name,
                                 address: address,
                                 dateAdded: Timestamp()))
