@@ -23,14 +23,22 @@ struct FireStoreView: View {
             }
             .padding()
             
-            Button {
-                restaurantStore.addRestaurant(restaurant:
-                            Restaurant(
-                                name: name,
-                                address: address,
-                                dateAdded: Timestamp()))
-            } label: {
-                Text("Add")
+            HStack {
+                Button("Add") {
+                    restaurantStore.addRestaurant(restaurant:
+                                Restaurant(
+                                    name: name,
+                                    address: address
+                                    ))
+                }
+                
+                Button("Update") {
+                    restaurantStore.updateRestaurant(restaurantName: name, restaurantAddress: address)
+                }
+                
+                Button("Delete") {
+                    restaurantStore.deleteRestaurant(restaurantName: name)
+                }
             }
             
             Button {

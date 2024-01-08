@@ -34,11 +34,16 @@ class RestaurantStore: ObservableObject {
     func fetchAllRestaurant() async {
         do {
             let snapshot = try await db.collection("Restaurants").getDocuments()
+            
+            // 이거 안해주면 load 할 때마다 와랄라 다 출력된다!(버튼 누를 때마다 리스트 계속 반복된다는 뜻)
+            self.restaurants.removeAll()
+            
             for document in snapshot.documents {
                 // TODO: 수정해보기
-                let data = document.data()
-                print("data:", data)
-                self.restaurants.append(Restaurant(name: data["name"] as? String ?? "", address: data["address"] as? String ?? "", dateAdded: data["dateAdded"] as? Timestamp ?? Timestamp()))
+                if let rest = try? document.data(as: Restaurant.self) {
+                    self.restaurants.append(rest)
+                    print("data", rest)
+                }
             }
         } catch {
             print(error)
