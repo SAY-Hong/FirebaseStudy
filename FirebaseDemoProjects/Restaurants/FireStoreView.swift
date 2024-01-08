@@ -41,12 +41,16 @@ struct FireStoreView: View {
                 }
             }
             
-            Button {
+            Button("Load") {
                 Task {
                    await restaurantStore.fetchAllRestaurant()
                 }
-            } label: {
-                Text("Load")
+            }
+            
+            Button("Find") {
+                Task {
+                    await restaurantStore.findRestaurantStore(restaurantName: name)
+                }
             }
             
             Spacer()

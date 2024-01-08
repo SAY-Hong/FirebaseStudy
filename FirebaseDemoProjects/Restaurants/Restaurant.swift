@@ -103,6 +103,23 @@ class RestaurantStore: ObservableObject {
         }
     }
     
+    // MARK: Query
+    // 가게 이름으로 쿼리문 실행하기
+    func findRestaurantStore(restaurantName: String) async {
+        do {
+            let snapshot = try await db.collection("Restaurants").whereField("name", isEqualTo: restaurantName).getDocuments()
+            self.restaurants.removeAll()
+            for document in snapshot.documents {
+                print("data", document.data())
+                if let rest = try? document.data(as: Restaurant.self) {
+                    self.restaurants.append(rest)
+                }
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
     // 실시간 업데이트 가져오기
     func startListening() {
         listener =
