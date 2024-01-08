@@ -85,5 +85,17 @@ class RestaurantStore: ObservableObject {
             }
         }
     }
+    
+    //MARK: delete
+    func deleteRestaurant(restaurantName: String) {
+        let docRef = db.collection("Restaurants").document(restaurantName)
+        docRef.delete() { error in
+            if let error = error {
+                print("Error deleting document:", error)
+            } else {
+                print("Successed deleted.")
+            }
+        }
+    }
 }
 
