@@ -35,6 +35,7 @@ class RestaurantStore: ObservableObject {
         do {
             let snapshot = try await db.collection("Restaurants").getDocuments()
             for document in snapshot.documents {
+                // TODO: 수정해보기
                 let data = document.data()
                 print("data:", data)
                 self.restaurants.append(Restaurant(name: data["name"] as? String ?? "", address: data["address"] as? String ?? "", dateAdded: data["dateAdded"] as? Timestamp ?? Timestamp()))
@@ -57,12 +58,13 @@ class RestaurantStore: ObservableObject {
     }
     
     func addRestaurant(restaurant: Restaurant) {
-        let documentData: [String: Any] = [
-            "name": restaurant.name,
-            "address": restaurant.address,
-            "dateAdded": Timestamp(date: Date())
-        ]
-        addRestaurant(docName: restaurant.name, documentData: documentData)
+//        let documentData: [String: Any] = [
+//            "name": restaurant.name,
+//            "address": restaurant.address,
+//            "dateAdded": Timestamp(date: Date())
+//        ]
+//        addRestaurant(docName: restaurant.name, documentData: documentData)
+        try? db.collection("Restaurants").document(restaurant.name).setData(from: restaurant)
     }
     
     // MARK: Update
