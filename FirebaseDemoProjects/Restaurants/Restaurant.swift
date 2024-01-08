@@ -29,7 +29,7 @@ class RestaurantStore: ObservableObject {
     
     @Published var restaurants = [Restaurant]()
     let db = Firestore.firestore()
-    
+    private var listener: ListenerRegistration?
     @MainActor
     func fetchAllRestaurant() async {
         do {
@@ -101,6 +101,43 @@ class RestaurantStore: ObservableObject {
                 print("Successed deleted.")
             }
         }
+    }
+    
+    // 실시간 업데이트 가져오기
+    func startListening() {
+        listener =
+        db.collection("Restaurants").addSnapshotListener { snapshot, error in
+            guard let snapshot = snapshot, error == nil else {
+                print("Error fetching snapshots: \(error!)")
+                return
+            }
+            snapshot.documentChanges.forEach { diff in
+                if diff.type == .added {
+                    if let rest = try? diff.document.data(as: Restaurant.self) {
+                        self.restaurants.append(rest)
+                        print("[add data]", rest)
+                    }
+                }
+                // TODO: 직접 해보기!
+                if diff.type == .modified {
+                    print(diff.document.data())
+                }
+                if diff.type == .removed {
+                    if let rest = try? diff.document.data(as: Restaurant.self) {
+                        for (index, item) in self.restaurants.enumerated() where rest.name == item.name {
+                            self.restaurants.remove(at: index)
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    // 실시간 관찰 중지
+    func stopListening() {
+        listener?.remove()
+        print("stopListening")
     }
 }
 

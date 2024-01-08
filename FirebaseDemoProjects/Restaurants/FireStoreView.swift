@@ -54,7 +54,18 @@ struct FireStoreView: View {
                 ForEach(restaurantStore.restaurants, id: \.self) { restaurant in
                     Text(restaurant.name)
                 }
+                .onDelete(perform: { indexSet in
+                    for index in indexSet {
+                        restaurantStore.deleteRestaurant(restaurantName: restaurantStore.restaurants[index].name)
+                    }
+                })
             }
+        }
+        .onAppear {
+            self.restaurantStore.startListening()
+        }
+        .onDisappear {
+            self.restaurantStore.stopListening()
         }
     }
 }
