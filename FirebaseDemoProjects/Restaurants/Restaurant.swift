@@ -15,12 +15,19 @@ struct Restaurant: Codable, Identifiable, Hashable {
     var name: String
     var address: String
     var dateAdded: Timestamp
+    
+    init(id: String, name: String, address: String, dateAdded: Timestamp = Timestamp(date: Date())) {
+        self.id = id
+        self.name = name
+        self.address = address
+        self.dateAdded = dateAdded
+    }
 }
 
 class RestaurantStore: ObservableObject {
     static let shared = RestaurantStore()
     
-    init() {}
+    private init() {}
     
     @Published var restaurants = [Restaurant]()
     let db = Firestore.firestore()
@@ -58,6 +65,18 @@ class RestaurantStore: ObservableObject {
             "dateAdded": Timestamp(date: Date())
         ]
         addRestaurant(docName: restaurant.name, documentData: documentData)
+    }
+    
+    // MARK: Update
+    func updateRestaurant(restaurantName: String, restaurantAddress: String) {
+        let docRef = db.collection("Restaurants").document(restaurantName)
+        docRef.setData( ["address": restaurantAddress], merge: true) { error in
+            if let error = error {
+                print("Error writing document:", error)
+            } else {
+                print("Success merged.")
+            }
+        }
     }
 }
 
