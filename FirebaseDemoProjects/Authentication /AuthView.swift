@@ -22,6 +22,12 @@ struct AuthView: View {
                         // MARK: Auth.auth()
                         authManager.emailAuthSignIn(email: email, password: password)
                     }
+                    NavigationLink {
+                        AuthAddView()
+                    } label: {
+                        Text("가입")
+                    }
+
                 } else {
                     Button("Sign out") {
                         authManager.signOut()

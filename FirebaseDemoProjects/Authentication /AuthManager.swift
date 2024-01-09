@@ -31,6 +31,21 @@ class AuthManager: ObservableObject {
         }
     }
     
+    func emailAuthSignUp(userName: String, email: String, password: String) {
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            guard error == nil else {
+                print(error!)
+                return
+            }
+            if let user = result?.user {
+                let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                changeRequest?.displayName = userName
+                print("user email: \(String(describing: user.email))")
+                print("user name: \(String(describing: user.displayName))")
+            }
+        }
+    }
+    
     func signOut() {
         try? Auth.auth().signOut()
         self.state = .signedOut

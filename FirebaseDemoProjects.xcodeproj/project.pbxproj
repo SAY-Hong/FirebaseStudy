@@ -36,6 +36,7 @@
 		B1FFE9282B4CDB1C004F5BE7 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FFE9272B4CDB1C004F5BE7 /* AuthView.swift */; };
 		B1FFE92A2B4CDBC1004F5BE7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B1FFE9292B4CDBC1004F5BE7 /* FirebaseAuth */; };
 		B1FFE92C2B4CE55E004F5BE7 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FFE92B2B4CE55E004F5BE7 /* AuthManager.swift */; };
+		B1FFE92E2B4CFEF1004F5BE7 /* AuthAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FFE92D2B4CFEF1004F5BE7 /* AuthAddView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		B1FFE9222B4CCEBE004F5BE7 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		B1FFE9272B4CDB1C004F5BE7 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		B1FFE92B2B4CE55E004F5BE7 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		B1FFE92D2B4CFEF1004F5BE7 /* AuthAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAddView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +232,7 @@
 			children = (
 				B1FFE9272B4CDB1C004F5BE7 /* AuthView.swift */,
 				B1FFE92B2B4CE55E004F5BE7 /* AuthManager.swift */,
+				B1FFE92D2B4CFEF1004F5BE7 /* AuthAddView.swift */,
 			);
 			path = "Authentication ";
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				B17CDDCB2B47DD4C0046FADC /* FireStoreView.swift in Sources */,
 				B1976AE52B4BC36C00DEA236 /* RecordHomeView.swift in Sources */,
 				B1976AE32B4BC28300DEA236 /* AddRecordView.swift in Sources */,
+				B1FFE92E2B4CFEF1004F5BE7 /* AuthAddView.swift in Sources */,
 				B1FFE92C2B4CE55E004F5BE7 /* AuthManager.swift in Sources */,
 				B1976AE12B4BBFF800DEA236 /* Recordings.swift in Sources */,
 				B1FEEE0F2B4694C9002DE584 /* HomeView.swift in Sources */,
