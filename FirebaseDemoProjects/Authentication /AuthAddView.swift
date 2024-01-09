@@ -35,6 +35,8 @@ struct AuthAddView: View {
                     isEmailError = !isVaildEmail(emailText) ? true : false
                     print(isEmailError)
                 }
+            
+            // TODO: 여기도 제약 조건 걸어주기
             SecureField("비밀번호 6자리 이상 입력하세요: ", text: $passwordText)
                 .padding()
                 .background(.thinMaterial)
@@ -45,9 +47,17 @@ struct AuthAddView: View {
             Button("가입") {
                 authManager.emailAuthSignUp(userName: nameText, email: emailText, password: passwordText)
             }
+            .disabled(!checkSignUpPossible())
         }
         .padding()
-        
+    }
+    // 가입 버튼 체크 함수
+    func checkSignUpPossible() -> Bool {
+        // TODO: isPasswordCountError, isPasswordConfirmError 도 추가하기
+        if isNameCountError || isEmailError  {
+            return false
+        }
+        return true
     }
 }
 
@@ -57,6 +67,7 @@ func isVaildEmail(_ email: String) -> Bool {
     let emailConfirm = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
     return emailConfirm.evaluate(with: email)
 }
+
 #Preview {
     AuthAddView()
 }
