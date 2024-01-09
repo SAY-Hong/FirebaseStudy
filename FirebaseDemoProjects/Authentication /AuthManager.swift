@@ -42,5 +42,16 @@ class AuthManager: ObservableObject {
         }
     }
     
+    func deleteUser() {
+        if let user = Auth.auth().currentUser {
+            user.delete { error in
+                if let error = error {
+                    print("Error deleting user", error)
+                } else {
+                    self.state = .signedOut
+                }
+            }
+        }
+    }
     
 }

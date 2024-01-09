@@ -28,13 +28,7 @@ struct AuthView: View {
                     }
                     
                     Button("Account Delete") {
-                        if let user = Auth.auth().currentUser {
-                            user.delete { error in
-                                if let error = error {
-                                    print("Error deleting user", error)
-                                }
-                            }
-                        }
+                        authManager.deleteUser()
                     }
                 }
             }
