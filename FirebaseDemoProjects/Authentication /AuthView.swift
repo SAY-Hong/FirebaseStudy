@@ -28,8 +28,30 @@ struct AuthView: View {
                         }
                     }
                 }
+                
+                Button("Sign out") {
+                    try? Auth.auth().signOut()
+                }
+                
+                Button("Account Delete") {
+                    if let user = Auth.auth().currentUser {
+                        user.delete { error in
+                            if let error = error {
+                                print("Error deleting user", error)
+                            }
+                        }
+                    }
+                }
             }
             .padding()
+            .onAppear {
+                // 로그인한 상태
+                if Auth.auth().currentUser != nil {
+                    print("로그인 중")
+                } else {
+                    print("로그인 필요")
+                }
+            }
         }
     }
 }
