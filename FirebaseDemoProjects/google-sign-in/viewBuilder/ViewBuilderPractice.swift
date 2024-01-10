@@ -7,12 +7,32 @@
 
 import SwiftUI
 
-struct ViewBuilderPractice: View {
+struct beforeViewBuilder: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Hello, World!")
+            .padding(100)
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerSize: CGSize(width: 50, height: 10)))
+            .shadow(color: .gray, radius: 10, x: 5, y: 5)
+    }
+}
+
+struct afterViewBuilder <Content : View> : View {
+    let content: Content
+    init(@ViewBuilder contentBuilder: () -> Content) {
+        self.content = contentBuilder()
+    }
+    var body: some View {
+        content
+            .padding(100)
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerSize: CGSize(width: 50, height: 10)))
+            .shadow(color: .gray, radius: 10, x: 5, y: 5)
     }
 }
 
 #Preview {
-    ViewBuilderPractice()
+    afterViewBuilder {
+        Text("Hello!")
+    }
 }
