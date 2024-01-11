@@ -28,6 +28,7 @@ enum AuthenticationFlow {
 
 @MainActor
 class AuthenticationViewModel: ObservableObject {
+    @Published var authenticationState: AuthenticationState = .unauthenticated
     init() {}
     
     func registerAuthStateHandler() {}

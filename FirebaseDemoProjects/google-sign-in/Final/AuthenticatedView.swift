@@ -43,7 +43,7 @@ struct AuthenticatedView<Content, Unauthenticated>: View where Content: View, Un
         self.content = content
     }
     var body: some View {
-        Text("Hello, World!")
+        switch viewModel.
     }
 }
 
