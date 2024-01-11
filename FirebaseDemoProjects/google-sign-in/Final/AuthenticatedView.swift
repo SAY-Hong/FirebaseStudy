@@ -53,13 +53,20 @@ struct AuthenticatedView<Content, Unauthenticated>: View where Content: View, Un
                 }
                 Button("Tap here to Login") {
                     viewModel.reset()
+                    // TODO: 로그인 화면 전환 기준 toggle 생성하기
                 }
+                // TODO: 로그인 화면 뷰로 이동
             }
         case .authenticated:
             VStack {
                 content()
-                Text("You're logged in as")
+                // TODO: display 알아낸 후 수정하기
+                Text("You're logged in as \(viewModel.email)")
+                Button("Tap here to view your profile") {
+                    // TODO: 프로필 화면 기준 toggle 생성하기
+                }
             }
+            // TODO: 사용자 프로필 뷰로 이동
         }
     }
 }

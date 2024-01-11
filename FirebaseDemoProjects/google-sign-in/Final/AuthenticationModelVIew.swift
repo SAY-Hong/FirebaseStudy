@@ -30,6 +30,7 @@ enum AuthenticationFlow {
 class AuthenticationViewModel: ObservableObject {
     // 처음은 로그인 되지 않은(인증되지 않은 상태)로 기본값을 둬야한다. 
     @Published var authenticationState: AuthenticationState = .unauthenticated
+    @Published var email: String = ""
     init() {}
     
     func registerAuthStateHandler() {}
