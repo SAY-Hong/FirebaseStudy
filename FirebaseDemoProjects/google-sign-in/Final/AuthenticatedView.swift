@@ -43,7 +43,24 @@ struct AuthenticatedView<Content, Unauthenticated>: View where Content: View, Un
         self.content = content
     }
     var body: some View {
-        switch viewModel.
+        switch viewModel.authenticationState {
+        case .unauthenticated, .authenticating:
+            VStack {
+                if let unauthenticated {
+                    unauthenticated
+                } else {
+                    Text("You're not logged in.")
+                }
+                Button("Tap here to Login") {
+                    viewModel.reset()
+                }
+            }
+        case .authenticated:
+            VStack {
+                content()
+                Text("You're logged in as")
+            }
+        }
     }
 }
 
