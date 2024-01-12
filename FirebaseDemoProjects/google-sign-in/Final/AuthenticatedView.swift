@@ -22,6 +22,9 @@ extension AuthenticatedView where Unauthenticated == EmptyView {
 struct AuthenticatedView<Content, Unauthenticated>: View where Content: View, Unauthenticated: View {
     // 사용자의 인증 상태를 관리하기 위한 상태 속성 정의하기.
     @StateObject private var viewModel = AuthenticationViewModel()
+    
+    // 로그인 뷰 보여주는 상태 변수
+    @State private var presentingLoginScreen = false
 
     var unauthenticated: Unauthenticated? // 사용자가 인증되지 않았을 때 표시되는 뷰
     
@@ -54,6 +57,7 @@ struct AuthenticatedView<Content, Unauthenticated>: View where Content: View, Un
                 Button("Tap here to Login") {
                     viewModel.reset()
                     // TODO: 로그인 화면 전환 기준 toggle 생성하기
+                    presentingLoginScreen.toggle()
                 }
                 // TODO: 로그인 화면 뷰로 이동
             }
