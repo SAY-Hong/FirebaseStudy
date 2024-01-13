@@ -56,10 +56,12 @@ struct AuthenticatedView<Content, Unauthenticated>: View where Content: View, Un
                 }
                 Button("Tap here to Login") {
                     viewModel.reset()
-                    // TODO: 로그인 화면 전환 기준 toggle 생성하기
                     presentingLoginScreen.toggle()
                 }
-                // TODO: 로그인 화면 뷰로 이동
+                .sheet(isPresented: $presentingLoginScreen, content: {
+                    // TODO: environmentObject 공부하기 + viewModel 추가하기
+                    AuthenticationView()
+                })
             }
         case .authenticated:
             VStack {
