@@ -60,7 +60,9 @@ struct AuthenticatedView<Content, Unauthenticated>: View where Content: View, Un
                 }
                 .sheet(isPresented: $presentingLoginScreen, content: {
                     // TODO: environmentObject 공부하기 + viewModel 추가하기
+                    // 당장에는 AuthenticationView에 별 코드를 작성한 것이 없어서 체감이 안되는건지 모르겠는데 65번째 코드가 없어도 오류가 안난다. environmentObject의 역할을 제대로 공부해보자
                     AuthenticationView()
+                        .environmentObject(viewModel)
                 })
             }
         case .authenticated:
