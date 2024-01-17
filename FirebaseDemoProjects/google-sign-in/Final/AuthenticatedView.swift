@@ -25,6 +25,9 @@ struct AuthenticatedView<Content, Unauthenticated>: View where Content: View, Un
     
     // 로그인 뷰 보여주는 상태 변수
     @State private var presentingLoginScreen = false
+    
+    // 프로필 뷰 보여주는 상태 변수
+    @State private var presentingProfileScreen = false
 
     var unauthenticated: Unauthenticated? // 사용자가 인증되지 않았을 때 표시되는 뷰
     
@@ -71,7 +74,7 @@ struct AuthenticatedView<Content, Unauthenticated>: View where Content: View, Un
                 // TODO: display 알아낸 후 수정하기
                 Text("You're logged in as \(viewModel.email)")
                 Button("Tap here to view your profile") {
-                    // TODO: 프로필 화면 기준 toggle 생성하기
+                    presentingProfileScreen.toggle()
                 }
             }
             // TODO: 사용자 프로필 뷰로 이동
