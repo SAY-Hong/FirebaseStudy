@@ -78,6 +78,10 @@ struct AuthenticatedView<Content, Unauthenticated>: View where Content: View, Un
                 }
             }
             // TODO: 사용자 프로필 뷰로 이동
+            .sheet(isPresented: $presentingProfileScreen) {
+                UserProfileView()
+                    .environmentObject(viewModel)
+            }
         }
     }
 }
