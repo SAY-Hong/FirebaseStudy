@@ -90,5 +90,7 @@ struct AuthenticatedView<Content, Unauthenticated>: View where Content: View, Un
     // 얘는 사용자가 인증되었을 때 보여줄 뷰 빌더 내용!
     AuthenticatedView {
         Text("You're signed in. ")
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.yellow)
     }
 }
